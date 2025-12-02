@@ -1,6 +1,4 @@
-# .github/workflows/build.yml
-
-name: Electron App Build
+ name: Electron App Build
 
 on:
   push:
@@ -14,28 +12,28 @@ on:
 
 jobs:
   build-windows:
+    # Use a Windows runner to build the Windows executable
     runs-on: windows-latest
 
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
 
-    # 1. Setup Node.js Environment (Required for npm and electron)
+    # 1. Setup Node.js Environment
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '20' # Use a stable Node.js version
+        node-version: '20'
 
-    # 2. Install Dependencies (Crucial for electron-pdf and electron-packager)
+    # 2. Install Dependencies (Includes Electron, electron-pdf, and electron-packager)
     - name: Install Dependencies
+      # Install project dependencies
       run: npm install
 
     # 3. Package the Electron Application for Windows
-    # The --ignore flag helps keep the final .exe small by excluding unnecessary GitHub files.
-    # The --overwrite flag ensures the previous build is replaced.
     - name: Package Windows App
-      run: |
-        npx electron-packager . AMAGAR-DS-Results --platform=win32 --arch=x64 --overwrite --ignore=".github" --ignore="README.md" --ignore="LICENSE" --prune=true
+      # The command packages the app for Windows 64-bit architecture
+      run: npx electron-packager . AMAGAR-DS-Results --platform=win32 --arch=x64 --overwrite --ignore=".github" --ignore="README.md" --ignore="LICENSE" --prune=true
 
     # 4. Upload the packaged application as a downloadable Artifact
     - name: Upload Windows Artifact
@@ -43,4 +41,3 @@ jobs:
       with:
         name: AMAGAR-DS-Results-Windows
         path: AMAGAR-DS-Results-win32-x64/
-￼Enter
