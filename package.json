@@ -1,0 +1,18 @@
+{
+  "name": "school-result-app",
+  "version": "1.0.0",
+  // ... other fields
+  "main": "main.js",
+  "dependencies": {          <-- ADD THIS SECTION
+    "electron-pdf": "0.0.10" <-- ADD THIS LINE
+  },
+  "scripts": {
+    "start": "electron .",
+    // ... other scripts
+  },
+  "devDependencies": {
+    "electron": "^29.0.0",
+    "electron-packager": "17.1.2"
+  }
+}
+￼Enter
