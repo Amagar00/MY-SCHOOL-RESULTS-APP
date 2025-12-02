@@ -3,8 +3,8 @@
   "version": "1.0.0",
   // ... other fields
   "main": "main.js",
-  "dependencies": {          <-- ADD THIS SECTION
-    "electron-pdf": "0.0.10" <-- ADD THIS LINE
+  "dependencies": {          
+    "electron-pdf": "0.0.10" 
   },
   "scripts": {
     "start": "electron .",
